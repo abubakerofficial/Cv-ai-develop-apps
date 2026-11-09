@@ -38,6 +38,11 @@ const ProjectTiltCard: React.FC<TiltCardProps> = ({ project, index, onSelect }) 
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-11deg', '11deg']);
   const glareX = useTransform(mouseXSpring, [-0.5, 0.5], ['0%', '100%']);
   const glareY = useTransform(mouseYSpring, [-0.5, 0.5], ['0%', '100%']);
+  const glareBackground = useTransform(
+    [glareX, glareY],
+    ([gx, gy]) =>
+      `radial-gradient(360px circle at ${gx} ${gy}, rgba(255, 0, 51, 0.14), transparent 70%)`
+  );
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -57,12 +62,12 @@ const ProjectTiltCard: React.FC<TiltCardProps> = ({ project, index, onSelect }) 
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 36 }}
+      initial={{ opacity: 0.95, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{
-        duration: 0.7,
-        delay: index * 0.12,
+        duration: 0.55,
+        delay: index * 0.08,
         ease: [0.16, 1, 0.3, 1]
       }}
       style={{ perspective: '1200px' }}
@@ -227,11 +232,7 @@ const ProjectTiltCard: React.FC<TiltCardProps> = ({ project, index, onSelect }) 
         {/* Subtle 3D Specular Glare */}
         <motion.div
           style={{
-            background: useTransform(
-              [glareX, glareY],
-              ([gx, gy]) =>
-                `radial-gradient(360px circle at ${gx} ${gy}, rgba(255, 0, 51, 0.14), transparent 70%)`
-            )
+            background: glareBackground
           }}
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         />

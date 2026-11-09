@@ -30,9 +30,9 @@ export const ParticleBackground: React.FC = () => {
       height = canvas.height = window.innerHeight;
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
-    const particleCount = Math.min(48, Math.floor(width / 32));
+    const particleCount = Math.min(36, Math.max(14, Math.floor(width / 42)));
     const particles: Particle[] = Array.from({ length: particleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
@@ -65,7 +65,6 @@ export const ParticleBackground: React.FC = () => {
         const currentAlpha =
           p.alpha * (0.65 + 0.35 * Math.sin(tick * p.pulseSpeed + p.pulseOffset));
 
-        // Subtle glowing crimson particle halo
         const gradient = ctx.createRadialGradient(
           p.x,
           p.y,
@@ -83,20 +82,18 @@ export const ParticleBackground: React.FC = () => {
         ctx.arc(p.x, p.y, p.radius * 5, 0, Math.PI * 2);
         ctx.fill();
 
-        // Crisp core
         ctx.beginPath();
         ctx.fillStyle = `rgba(255, 110, 130, ${Math.min(1, currentAlpha * 1.4)})`;
         ctx.arc(p.x, p.y, p.radius * 0.7, 0, Math.PI * 2);
         ctx.fill();
 
-        // Connect nearby particles with subtle cybernetic filaments
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dx = p.x - p2.x;
           const dy = p.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 135) {
-            const lineAlpha = (1 - dist / 135) * 0.11;
+          if (dist < 130) {
+            const lineAlpha = (1 - dist / 130) * 0.11;
             ctx.beginPath();
             ctx.strokeStyle = `rgba(255, 0, 51, ${lineAlpha})`;
             ctx.lineWidth = 0.6;
@@ -120,23 +117,12 @@ export const ParticleBackground: React.FC = () => {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      {/* Deep dark ambient crimson gradient mesh */}
+      {/* Zero-blur hardware-safe radial gradient mesh (optimized for iOS Safari & Desktop) */}
       <div
-        className="absolute -top-48 left-1/4 h-[540px] w-[540px] rounded-full opacity-20 blur-[130px]"
+        className="absolute inset-0"
         style={{
-          background: 'radial-gradient(circle, #ff0033 0%, rgba(120,0,24,0.3) 55%, transparent 100%)'
-        }}
-      />
-      <div
-        className="absolute top-[42%] -right-36 h-[480px] w-[480px] rounded-full opacity-15 blur-[140px]"
-        style={{
-          background: 'radial-gradient(circle, #ff0033 0%, rgba(90,0,18,0.2) 60%, transparent 100%)'
-        }}
-      />
-      <div
-        className="absolute -bottom-40 left-1/3 h-[500px] w-[500px] rounded-full opacity-15 blur-[140px]"
-        style={{
-          background: 'radial-gradient(circle, #ff0033 0%, transparent 75%)'
+          background:
+            'radial-gradient(circle at 22% 12%, rgba(255, 0, 51, 0.16) 0%, rgba(120, 0, 24, 0.05) 35%, transparent 65%), radial-gradient(circle at 85% 48%, rgba(255, 0, 51, 0.12) 0%, rgba(90, 0, 18, 0.04) 35%, transparent 65%), radial-gradient(circle at 35% 90%, rgba(255, 0, 51, 0.12) 0%, transparent 55%)'
         }}
       />
 

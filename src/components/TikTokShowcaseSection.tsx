@@ -143,10 +143,10 @@ export const TikTokShowcaseSection: React.FC = () => {
       <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-12">
         {/* Left Column: Creator Narrative, Handle & Interactive Reel Controls */}
         <motion.div
-          initial={{ opacity: 0, x: -28 }}
+          initial={{ opacity: 0.95, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-6"
         >
           <div className="mb-3 flex items-center gap-2 text-xs text-zinc-400">
@@ -258,12 +258,12 @@ export const TikTokShowcaseSection: React.FC = () => {
         {/* Right Column: 3D Animated iPhone Mockup Floating & Rotating on Scroll */}
         <div className="flex items-center justify-center lg:col-span-6">
           <div style={{ perspective: '1600px' }} className="relative flex items-center justify-center py-4">
-            {/* Ambient Crimson Halo Behind 3D Phone */}
+            {/* Ambient Crimson Halo Behind 3D Phone (WebKit hardware-safe radial gradient) */}
             <div
-              className="pointer-events-none absolute h-[520px] w-[320px] rounded-full opacity-45 blur-[110px]"
+              className="pointer-events-none absolute -inset-12 rounded-full"
               style={{
                 background:
-                  'radial-gradient(circle, #ff0033 0%, rgba(160, 0, 32, 0.35) 55%, transparent 100%)'
+                  'radial-gradient(circle, rgba(255, 0, 51, 0.28) 0%, rgba(160, 0, 32, 0.1) 45%, transparent 70%)'
               }}
             />
 

@@ -85,10 +85,10 @@ export const ContactSection: React.FC = () => {
     >
       {/* Section Header */}
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0.95, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="mb-14 flex flex-col justify-between gap-4 md:flex-row md:items-end"
       >
         <div>
@@ -111,14 +111,14 @@ export const ContactSection: React.FC = () => {
       </motion.div>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-        {/* Left Column: 3 Magnetic Social Buttons (WhatsApp, Instagram, Email) */}
+        {/* Left Column: Magnetic Social Buttons */}
         <div className="flex flex-col justify-between gap-5 lg:col-span-7">
           {/* 1. WhatsApp Button: Connect to "03095704438" with a glowing green/red pulse */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0.95, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             <MagneticWrap strength={0.28}>
               <a

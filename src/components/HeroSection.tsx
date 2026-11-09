@@ -45,9 +45,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Left Column: Typographic Hierarchy & CTAs */}
         <div className="lg:col-span-7">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0.9, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="mb-5 flex items-center gap-3 text-xs tracking-wider text-zinc-400"
           >
             <span className="font-mono text-[#ff0033]">01</span>
@@ -58,31 +58,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </motion.div>
 
           {/* 3D Cinematic Fade-Up Reveal of "Abubakar Hussain" */}
-          <div className="perspective-[1200px]">
+          <div>
             <motion.h1
               initial={{
-                opacity: 0,
-                y: 56,
-                rotateX: 28,
-                scale: 0.96,
-                filter: 'blur(10px)'
+                opacity: 0.9,
+                y: 24,
+                scale: 0.98
               }}
               animate={{
                 opacity: 1,
                 y: 0,
-                rotateX: 0,
-                scale: 1,
-                filter: 'blur(0px)'
+                scale: 1
               }}
               transition={{
-                duration: 0.95,
+                duration: 0.65,
                 ease: [0.16, 1, 0.3, 1]
               }}
-              style={{ transformStyle: 'preserve-3d', textWrap: 'balance' }}
+              style={{ textWrap: 'balance' }}
               className="font-display text-[clamp(2.6rem,5.4vw,4.75rem)] font-extrabold leading-[1.03] tracking-tight text-white"
             >
               Abubakar{' '}
-              <span className="bg-gradient-to-r from-white via-zinc-100 to-[#ff0033] bg-clip-text text-transparent drop-shadow-[0_0_28px_rgba(255,0,51,0.35)]">
+              <span className="bg-gradient-to-r from-white via-zinc-100 to-[#ff0033] bg-clip-text text-transparent">
                 Hussain
               </span>
             </motion.h1>
@@ -90,14 +86,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Typewriter Subtitle */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0.95, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 flex min-h-[3.25rem] items-center rounded-xl border border-white/10 bg-zinc-950/80 px-4 py-3 backdrop-blur-md"
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 flex min-h-[3.25rem] items-center rounded-xl border border-white/10 bg-zinc-950/90 px-4 py-3"
           >
             <Terminal className="mr-3 h-4 w-4 shrink-0 text-[#ff0033]" />
             <p className="font-mono text-sm font-medium tracking-wide text-zinc-100 sm:text-base">
-              <span>{typedText}</span>
+              <span>{typedText || FULL_SUBTITLE}</span>
               <span
                 aria-hidden="true"
                 className={`ml-1 inline-block h-4 w-[2px] align-middle bg-[#ff0033] shadow-[0_0_8px_#ff0033] ${
@@ -109,9 +105,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Lead Prose */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0.95, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.55, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="mt-6 max-w-[62ch] text-base leading-relaxed text-zinc-400 sm:text-[17px]"
           >
             Engineering next-generation AI web platforms, tactile 3D digital interfaces, and
@@ -121,9 +117,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Action Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0.95, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.55, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
             <button
@@ -138,7 +134,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <button
               type="button"
               onClick={onWatchShowreel}
-              className="group inline-flex items-center gap-2.5 rounded-xl border border-white/15 bg-zinc-900/70 px-6 py-3.5 text-sm font-medium text-zinc-200 backdrop-blur-md transition-all duration-200 hover:border-[#ff0033]/60 hover:bg-zinc-900 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ff0033] whitespace-nowrap shrink-0 cursor-pointer"
+              className="group inline-flex items-center gap-2.5 rounded-xl border border-white/15 bg-zinc-900/90 px-6 py-3.5 text-sm font-medium text-zinc-200 transition-all duration-200 hover:border-[#ff0033]/60 hover:bg-zinc-900 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ff0033] whitespace-nowrap shrink-0 cursor-pointer"
             >
               <Play className="h-4 w-4 fill-[#ff0033] text-[#ff0033] transition-transform duration-200 group-hover:scale-110" />
               <span>Launch TikTok Showreel</span>
@@ -149,16 +145,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Right Column: Circular Avatar Wrapped in Glowing Cybernetic Scanning Circle */}
         <div className="flex items-center justify-center lg:col-span-5">
           <motion.div
-            initial={{ opacity: 0, scale: 0.88, rotateY: -15 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            transition={{ duration: 0.95, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0.95, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="relative flex h-[340px] w-[340px] items-center justify-center sm:h-[390px] sm:w-[390px]"
           >
-            {/* Ambient Crimson Core Glow */}
+            {/* Ambient Crimson Core Glow (WebKit hardware-safe radial gradient) */}
             <div
-              className="pointer-events-none absolute inset-6 rounded-full opacity-40 blur-3xl"
+              className="pointer-events-none absolute inset-0 rounded-full"
               style={{
-                background: 'radial-gradient(circle, #ff0033 0%, rgba(255,0,51,0.15) 60%, transparent 100%)'
+                background: 'radial-gradient(circle, rgba(255,0,51,0.32) 0%, rgba(255,0,51,0.08) 50%, transparent 72%)'
               }}
             />
 

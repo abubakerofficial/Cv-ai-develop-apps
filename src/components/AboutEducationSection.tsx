@@ -21,10 +21,10 @@ export const AboutEducationSection: React.FC = () => {
     >
       {/* Section Header */}
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0.95, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end"
       >
         <div>
@@ -48,12 +48,12 @@ export const AboutEducationSection: React.FC = () => {
 
       {/* Main Sleek Glassmorphism Card with Glowing Red Border on Hover */}
       <motion.div
-        initial={{ opacity: 0, y: 32 }}
+        initial={{ opacity: 0.95, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         onMouseMove={handleMouseMove}
-        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/75 p-7 backdrop-blur-2xl transition-all duration-300 hover:border-[#ff0033]/85 hover:shadow-[0_0_55px_-12px_rgba(255,0,51,0.45)] sm:p-10"
+        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/90 p-7 transition-all duration-300 hover:border-[#ff0033]/85 hover:shadow-[0_0_55px_-12px_rgba(255,0,51,0.45)] sm:p-10"
       >
         {/* Dynamic Cursor-Following Crimson Spotlight */}
         <div
